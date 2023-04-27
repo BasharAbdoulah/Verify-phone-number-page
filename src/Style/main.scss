@@ -1,0 +1,122 @@
+$blue-main-color: rgb(35, 72, 149);
+
+header {
+  background-color: aliceblue;
+  justify-content: space-between;
+  margin: 0 !important;
+  padding: 10px 20px;
+  .logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      width: 100px;
+    }
+  }
+  .nav-items ul {
+    display: flex;
+    column-gap: 10px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    li {
+      font-size: 11px;
+      font-weight: 600;
+      list-style-type: none;
+      text-transform: uppercase;
+      color: $blue-main-color;
+    }
+  }
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  height: calc(100vh - 122px);
+  background-image: url("../../public/BACK-WEBSITE_d1450.jpg");
+  background-size: cover;
+
+  .middle-logo {
+    content: "";
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    img {
+      height: 82px;
+      /* color: #fff; */
+      background: #fff;
+      padding: 5px;
+      border-radius: 9px;
+      opacity: 31%;
+    }
+  }
+  & > .row,
+  .col-12 {
+    margin: 0;
+    max-width: 100%;
+    height: 100%;
+    .form-container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      form {
+        width: 290px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px 10px;
+
+        box-shadow: 0 0 16px 4px #00000033;
+        h3 {
+          font-size: 14px;
+          color: $blue-main-color;
+          text-transform: uppercase;
+        }
+        label {
+          width: 100%;
+          text-align: left;
+          font-size: 11px;
+        }
+
+        button {
+          width: 100%;
+          border: none;
+          border-radius: 5px;
+          color: #fff;
+          font-weight: 600;
+          padding: 9px;
+          cursor: pointer;
+          margin-top: 20px;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+button.number {
+  background: linear-gradient(
+    90deg,
+    $blue-main-color 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+button.code {
+  background: linear-gradient(
+    93deg,
+    rgb(0, 212, 255) 0%,
+    rgb(35, 72, 149) 100%
+  );
+}
+
+.footer-row {
+  margin: 0;
+  max-height: 70px;
+  max-width: 100%;
+  footer {
+    margin: 0 !important;
+  }
+}
