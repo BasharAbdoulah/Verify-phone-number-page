@@ -22,7 +22,7 @@ function App() {
   const [codeMode, setCodeMode] = useState(false);
   const [lodaing, setLoading] = useState(false);
 
-  // Get the user agent string
+  // Get unique id using browser local storage
   // function getMachineId() {
   //   let machineId = localStorage.getItem("MachineId");
 
@@ -37,18 +37,14 @@ function App() {
   // console.log(getMachineId());
 
   function generateUniqueID() {
-    var userAgentString = window.navigator.userAgent;
-
-    console.log("userAgentString length", userAgentString.length);
-    console.log("userAgentString ", userAgentString.split(" "));
-    var uniqueID = 0;
-    for (var i = 0; i < userAgentString.length; i++) {
-      uniqueID += userAgentString.charCodeAt(i);
-    }
-    return uniqueID.toString();
+    var hardwareConcurrency = window.navigator.hardwareConcurrency || "";
+    var platform = window.navigator.userAgent.platform || "";
+    var userAgent = window.navigator.userAgent || "";
+    var uniqueID = hardwareConcurrency + "-" + platform + "-" + userAgent;
+    return uniqueID;
   }
 
-  console.log("unique id:", generateUniqueID());
+  console.log(generateUniqueID());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,28 +83,29 @@ function App() {
             <div className="container form-container">
               <form>
                 <p style={{ fontSize: "12px" }}>
-                  Your device id is: {generateUniqueID()}
+                  Your device id is:{" "}
+                  <code>{generateUniqueID().replace(/\s/g, "")}</code>
                 </p>
                 <h3>
                   {codeMode ? strings.code.title : strings.phoneNumber.title}
                 </h3>
-                <div class="row">
-                  <div class="col">
+                <div className="row">
+                  <div className="col">
                     <label>
                       {codeMode
                         ? strings.code.label
                         : strings.phoneNumber.label}
                     </label>
-                    <input type="text" class="form-control" />
+                    <input type="text" className="form-control" />
                   </div>
                 </div>
                 {codeMode ? (
                   ""
                 ) : (
-                  <div class="row">
-                    <div class="col">
+                  <div className="row">
+                    <div className="col">
                       <label>Full Name</label>
-                      <input type="text" class="form-control" />
+                      <input type="text" className="form-control" />
                     </div>
                   </div>
                 )}
@@ -123,7 +120,7 @@ function App() {
                       {lodaing ? (
                         <div
                           style={{ width: "30px", height: "30px" }}
-                          class="spinner-border text-dark"
+                          className="spinner-border text-dark"
                           role="status"
                         ></div>
                       ) : codeMode ? (
@@ -140,34 +137,34 @@ function App() {
         </div>
       </main>
       <div className="row footer-row">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <div className="container d-flex align-items-center justify-content-between">
-            <div class="col-md-4 d-flex align-items-center">
+            <div className="col-md-4 d-flex align-items-center">
               <a
                 href="/"
-                class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
+                className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
               >
                 <img height={20} src={logo} />
               </a>
-              <span class="mb-3 mb-md-0 text-muted">
+              <span className="mb-3 mb-md-0 text-muted">
                 &copy; 2022 Company, Inc
               </span>
             </div>
 
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-              <li class="ms-3">
-                <a class="text-muted" href="#">
-                  <i class="bi bi-instagram"></i>
+            <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+              <li className="ms-3">
+                <a className="text-muted" href="#">
+                  <i className="bi bi-instagram"></i>
                 </a>
               </li>
-              <li class="ms-3">
-                <a class="text-muted" href="#">
-                  <i class="bi bi-facebook"></i>
+              <li className="ms-3">
+                <a className="text-muted" href="#">
+                  <i className="bi bi-facebook"></i>
                 </a>
               </li>
-              <li class="ms-3">
-                <a class="text-muted" href="#">
-                  <i class="bi bi-twitter"></i>
+              <li className="ms-3">
+                <a className="text-muted" href="#">
+                  <i className="bi bi-twitter"></i>
                 </a>
               </li>
             </ul>
