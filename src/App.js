@@ -22,6 +22,17 @@ function App() {
   const [codeMode, setCodeMode] = useState(false);
   const [lodaing, setLoading] = useState(false);
 
+  // Get the user agent string
+  var userAgent = navigator.userAgent;
+
+  // Search for the device ID in the user agent string
+  var deviceId = userAgent.match(
+    /(iPhone|iPod|iPad|Android|BlackBerry|Windows Phone|Tablet|Mobile|Silk|Kindle|Opera Mini|IEMobile|BB10)/i
+  );
+
+  // Display the device ID in the console
+  console.log(deviceId);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
