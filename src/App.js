@@ -23,15 +23,18 @@ function App() {
   const [lodaing, setLoading] = useState(false);
 
   // Get the user agent string
-  var userAgent = navigator.userAgent;
+  function getMachineId() {
+    let machineId = localStorage.getItem("MachineId");
 
-  // Search for the device ID in the user agent string
-  var deviceId = userAgent.match(
-    /(iPhone|iPod|iPad|Android|BlackBerry|Windows Phone|Tablet|Mobile|Silk|Kindle|Opera Mini|IEMobile|BB10)/i
-  );
+    if (!machineId) {
+      machineId = crypto.randomUUID();
+      localStorage.setItem("MachineId", machineId);
+    }
 
-  // Display the device ID in the console
-  console.log(deviceId);
+    return machineId;
+  }
+
+  console.log(getMachineId());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,6 +72,9 @@ function App() {
           <div className="col-12">
             <div className="container form-container">
               <form>
+                <p style={{ fontSize: "12px" }}>
+                  Your device id is: {getMachineId()}
+                </p>
                 <h3>
                   {codeMode ? strings.code.title : strings.phoneNumber.title}
                 </h3>
