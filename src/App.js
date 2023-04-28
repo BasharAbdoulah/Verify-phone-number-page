@@ -23,18 +23,32 @@ function App() {
   const [lodaing, setLoading] = useState(false);
 
   // Get the user agent string
-  function getMachineId() {
-    let machineId = localStorage.getItem("MachineId");
+  // function getMachineId() {
+  //   let machineId = localStorage.getItem("MachineId");
 
-    if (!machineId) {
-      machineId = crypto.randomUUID();
-      localStorage.setItem("MachineId", machineId);
+  //   // if (!machineId) {
+  //   //   machineId = crypto.randomUUID();
+  //   //   localStorage.setItem("MachineId", machineId);
+  //   // }
+
+  //   return machineId;
+  // }
+
+  // console.log(getMachineId());
+
+  function generateUniqueID() {
+    var userAgentString = window.navigator.userAgent;
+
+    console.log("userAgentString length", userAgentString.length);
+    console.log("userAgentString ", userAgentString.split(" "));
+    var uniqueID = 0;
+    for (var i = 0; i < userAgentString.length; i++) {
+      uniqueID += userAgentString.charCodeAt(i);
     }
-
-    return machineId;
+    return uniqueID.toString();
   }
 
-  console.log(getMachineId());
+  console.log("unique id:", generateUniqueID());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,7 +87,7 @@ function App() {
             <div className="container form-container">
               <form>
                 <p style={{ fontSize: "12px" }}>
-                  Your device id is: {getMachineId()}
+                  Your device id is: {generateUniqueID()}
                 </p>
                 <h3>
                   {codeMode ? strings.code.title : strings.phoneNumber.title}
