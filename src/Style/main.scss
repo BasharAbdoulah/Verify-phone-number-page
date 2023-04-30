@@ -40,7 +40,7 @@ header {
   .middle-logo {
     content: "";
     position: absolute;
-    top: 100px;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
     img {
@@ -64,7 +64,7 @@ header {
       align-items: center;
 
       form {
-        width: 290px;
+        width: 90%;
         background-color: #fff;
         border-radius: 10px;
         padding: 30px 10px;

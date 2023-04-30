@@ -25,6 +25,30 @@ function App() {
   const [code, setCode] = useState();
   const [phoneNumber, setPhoneNumber] = useState();
 
+  // Get unique id using browser local storage
+  // function getMachineId() {
+  //   let machineId = localStorage.getItem("MachineId");
+
+  //   // if (!machineId) {
+  //   //   machineId = crypto.randomUUID();
+  //   //   localStorage.setItem("MachineId", machineId);
+  //   // }
+
+  //   return machineId;
+  // }
+
+  // console.log(getMachineId());
+
+  function generateUniqueID() {
+    var hardwareConcurrency = window.navigator.hardwareConcurrency || "";
+    var platform = window.navigator.userAgent.platform || "";
+    var userAgent = window.navigator.userAgent || "";
+    var uniqueID = hardwareConcurrency + "-" + platform + "-" + userAgent;
+    return uniqueID;
+  }
+
+  console.log(generateUniqueID());
+
   const handleSubmit = (e) => {
     console.log(e.target.fullName.value);
     e.preventDefault();
@@ -64,8 +88,8 @@ function App() {
                 <h3>
                   {codeMode ? strings.code.title : strings.phoneNumber.title}
                 </h3>
-                <div class="row">
-                  <div class="col">
+                <div className="row">
+                  <div className="col">
                     <label>
                       {codeMode
                         ? strings.code.label
@@ -84,8 +108,8 @@ function App() {
                 {codeMode ? (
                   ""
                 ) : (
-                  <div class="row">
-                    <div class="col">
+                  <div className="row">
+                    <div className="col">
                       <label>Full Name</label>
                       <input
                         required
@@ -136,20 +160,20 @@ function App() {
               </span>
             </div>
 
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-              <li class="ms-3">
-                <a class="text-muted" href="#">
-                  <i class="bi bi-instagram"></i>
+            <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+              <li className="ms-3">
+                <a className="text-muted" href="#">
+                  <i className="bi bi-instagram"></i>
                 </a>
               </li>
-              <li class="ms-3">
-                <a class="text-muted" href="#">
-                  <i class="bi bi-facebook"></i>
+              <li className="ms-3">
+                <a className="text-muted" href="#">
+                  <i className="bi bi-facebook"></i>
                 </a>
               </li>
-              <li class="ms-3">
-                <a class="text-muted" href="#">
-                  <i class="bi bi-twitter"></i>
+              <li className="ms-3">
+                <a className="text-muted" href="#">
+                  <i className="bi bi-twitter"></i>
                 </a>
               </li>
             </ul>
