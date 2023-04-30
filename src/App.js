@@ -21,18 +21,21 @@ const strings = {
 function App() {
   const [codeMode, setCodeMode] = useState(false);
   const [lodaing, setLoading] = useState(false);
+  const [fullName, setFullName] = useState();
+  const [code, setCode] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
 
   const handleSubmit = (e) => {
+    console.log(e.target.fullName.value);
     e.preventDefault();
     setLoading(true);
-  };
-
-  if (lodaing) {
     setTimeout(() => {
       setLoading(false);
       setCodeMode(true);
+      setPhoneNumber("");
     }, 2000);
-  }
+  };
+
   return (
     <div className="App">
       <header className="row">
@@ -57,7 +60,7 @@ function App() {
           </div>
           <div className="col-12">
             <div className="container form-container">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <h3>
                   {codeMode ? strings.code.title : strings.phoneNumber.title}
                 </h3>
@@ -68,7 +71,14 @@ function App() {
                         ? strings.code.label
                         : strings.phoneNumber.label}
                     </label>
-                    <input type="text" class="form-control" />
+                    <input
+                      name="phoneNumber"
+                      required
+                      type="text"
+                      class="form-control"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
                   </div>
                 </div>
                 {codeMode ? (
@@ -77,21 +87,28 @@ function App() {
                   <div class="row">
                     <div class="col">
                       <label>Full Name</label>
-                      <input type="text" class="form-control" />
+                      <input
+                        required
+                        name="fullName"
+                        type="text"
+                        class="form-control"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                      />
                     </div>
                   </div>
                 )}
                 <div className="row">
                   <div className="col">
                     <button
-                      onClick={handleSubmit}
+                      // onClick={handleSubmit}
                       className={`d-flex justify-content-center align-items-center ${
                         codeMode ? "code" : "number"
                       }`}
                     >
                       {lodaing ? (
                         <div
-                          style={{ width: "30px", height: "30px" }}
+                          style={{ width: "25px", height: "25px" }}
                           class="spinner-border text-dark"
                           role="status"
                         ></div>
@@ -109,17 +126,13 @@ function App() {
         </div>
       </main>
       <div className="row footer-row">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer class="d-flex  flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <div className="container d-flex align-items-center justify-content-between">
-            <div class="col-md-4 d-flex align-items-center">
-              <a
-                href="/"
-                class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-              >
-                <img height={20} src={logo} />
-              </a>
-              <span class="mb-3 mb-md-0 text-muted">
-                &copy; 2022 Company, Inc
+            <div class="col-md-4 d-flex align-items-center copyright">
+              <img height={20} src={logo} />
+
+              <span class="m ml-1 text-muted">
+                &copy; 2023, All rights reserved
               </span>
             </div>
 

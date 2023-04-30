@@ -84,6 +84,7 @@ header {
         button {
           width: 100%;
           border: none;
+          height: 42px;
           border-radius: 5px;
           color: #fff;
           font-weight: 600;
@@ -118,5 +119,9 @@ button.code {
   max-width: 100%;
   footer {
     margin: 0 !important;
+
+    .copyright {
+      column-gap: 10px;
+    }
   }
 }
