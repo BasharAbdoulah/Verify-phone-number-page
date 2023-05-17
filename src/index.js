@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <FpjsProvider
       loadOptions={{
-        apiKey: "Ih9Z8CbyijXdZje4g1LT",
+        apiKey: "NnEJOXyng4Ra1PjIBfwt",
       }}
     >
       <App />
