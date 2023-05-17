@@ -73,6 +73,10 @@ function App() {
     { immediate: true }
   );
 console.log(data)
+
+useEffect(() => {
+  getData()
+}, [])
   return (
     <div className="App">
       <header className="row">
