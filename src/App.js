@@ -99,7 +99,6 @@ console.log(data)
             <div className="container form-container">
               <form onSubmit={handleSubmit}>
                 <p>visitorId: <code>{data?.visitorId}</code></p>
-                <p>Meta version: <code>{data?.meta.version}</code></p>
                 <p>IP: <code>{data?.ip}</code></p>
                 <br/>
                 <h3>Download KFC App It's free &hearts;</h3>
